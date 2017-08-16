@@ -97,6 +97,17 @@ namespace UnitTestCustomList
             Assert.AreEqual(expectedResults, actualResults);
         }
 
+        [TestMethod]
+        public void TestSubtractOrder()
+        {
+            CustomListClass<string> list = new CustomListClass<string>;
+            list.Add("TestOne");
+            list.Add("TestTwo");
+            string expectedResult = "TestTwo";
+            list.Subtract([0])
+
+            string actualResult = list[1]; 
+        }
         
 
         //END SUBTRACT METHOD//
