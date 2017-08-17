@@ -33,12 +33,27 @@ namespace UnitTestCustomList
 
         //    Assert.AreEqual(expectedResult, actualResult);
         //}
+        //COUNT METHOD//
+        [TestMethod]
+        public void TestCount()
+        {
+            CustomListClass<string> list = new CustomListClass<string>();
+            list.Add("testOne");
+            list.Add("testTwo");
+            int expectedResult = 2;
 
+            int actualResult = list.Count();
+
+            Assert.AreEqual(expectedResult, actualResult);
+        } 
+
+
+        //END COUNT METHOD//
         //ADD METHOD//
         [TestMethod]
         public void TestListAdd()
         {
-            CustomListClass<string> list = new CustomListClass<string>;
+            CustomListClass<string> list = new CustomListClass<string>();
             list.Add("TestOne");
             string expectedResults = "TestOne";
 
@@ -50,7 +65,7 @@ namespace UnitTestCustomList
         [TestMethod]
         public void TestIfAddWorksWithTwo()
         {
-            CustomListClass<string> list = new CustomListClass<string>;
+            CustomListClass<string> list = new CustomListClass<string>();
             list.Add("TestOne");
             list.Add("TestTwo");
             int expectedResults = 2;
@@ -63,7 +78,7 @@ namespace UnitTestCustomList
         [TestMethod]
         public void TestListHoldValueOrder()
         {
-            CustomListClass<string> list = new CustomListClass<string>;
+            CustomListClass<string> list = new CustomListClass<string>();
             list.Add("TestOne");
             list.Add("TestTwo");
             string expectedResults = "TestTwo";
@@ -74,7 +89,7 @@ namespace UnitTestCustomList
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FormatException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestAddingToWrongObjectType()
         {
             CustomListClass<string> list = new CustomListClass<string>();
@@ -83,7 +98,7 @@ namespace UnitTestCustomList
         }
 
         //END ADD METHOD//
-        //SUBTRACT METHOD//
+        //REMOVE METHOD//
         [TestMethod]
         public void TestIfRemoveWorks()
         {
@@ -100,31 +115,11 @@ namespace UnitTestCustomList
         [TestMethod]
         public void TestRemoveOrder()
         {
-            CustomListClass<string> list = new CustomListClass<string>;
+            CustomListClass<string> list = new CustomListClass<string>();
             list.Add("TestOne");
             list.Add("TestTwo");
             string expectedResult = "TestTwo";
             list.Remove([0])
-
-            string actualResult = list[1]; 
-        }
-
-        //[TestMethod]
-        //[ExpectedException(typeof(ArgumentOutOfRangeException))]
-        //public void Test
-        
-
-        //END SUBTRACT METHOD//
-        //CONVER TO STRING//
-        [TestMethod]
-        public void TestConvertIntToString()
-        {
-            CustomListClass<int> list = new CustomListClass<int>;
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
-            string expectedResult = "123";
-            list.ConvertToString();
 
             string actualResult = list[1];
 
@@ -132,13 +127,49 @@ namespace UnitTestCustomList
         }
 
         [TestMethod]
+        public void TestRemoveAndPlaceInNewValue()
+        {
+            CustomListClass<string> list = new CustomListClass<string>();
+            list.Add("TestOne");
+            list.Add("TestTwo");
+            string expectedResult = "TestTwo";
+            string temp = list.Remove([1]);
+
+            string actualResult = temp;
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        //[TestMethod]
+        //[ExpectedException(typeof(ArgumentOutOfRangeException))]
+        //public void Test
+        
+
+        //END REMOVE METHOD//
+        //CONVER TO STRING//
+        [TestMethod]
+        public void TestConvertIntToString()
+        {
+            CustomListClass<int> list = new CustomListClass<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            string expectedResult = "123";
+            list.ToString();
+
+            string actualResult = list.ToString();
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
         public void TestConvertToOneString()
         {
-            CustomListClass<string> list = new CustomListClass<string>;
+            CustomListClass<string> list = new CustomListClass<string>();
             list.Add("TestOne");
             list.Add("TestTwo");
             list.Add("TestThree");
-            string Converted = list.ConvertToString();
+            string Converted = list.ToString();
 
             string expectedResult = "TestOneTestTwoTestThree";
 
@@ -150,11 +181,11 @@ namespace UnitTestCustomList
         [TestMethod]
         public void TestConvertToOneWithCommaString()
         {
-            CustomListClass<string> list = new CustomListClass<string>;
+            CustomListClass<string> list = new CustomListClass<string>();
             list.Add("TestOne");
             list.Add("TestTwo");
             list.Add("TestThree");
-            string Converted = list.ConvertToString(",");
+            string Converted = list.ToString(",");
 
             string expectedResult = "TestOne,TestTwo,TestThree";
 
@@ -166,16 +197,159 @@ namespace UnitTestCustomList
 
 
         //END CONVERT TO STRING//
+        //ADD/CONCAT//
         [TestMethod]
-        public void TestAddingTwoTogether()
+        public void TestAddingTwoInts()
         {
-            CustomListClass<int> list = new CustomListClass<int>;
+            CustomListClass<int> list = new CustomListClass<int>();
             list.Add(1);
             list.Add(2);
-            int expectedResult = 3;
-            int addedNumber = list.addTwo([0], [1]);
+            CustomListClass<int> listTwo = new CustomListClass<int>();
+            listTwo.Add(3);
+            listTwo.Add(4);
+            int expectedResult = 4;
+            CustomListClass<string> listThree = list + listTwo;
 
-            int actualResult = addedNumber; 
+            int actualResult = listThree.Count;
+
+            Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestMethod]
+        public void TestAddingTwoStrings()
+        {
+            CustomListClass<string> list = new CustomListClass<string>();
+            list.Add("TestOne");
+            list.Add("TestTwo");
+            list.Add("testThree");
+            CustomListClass<string> listTwo = new CustomListClass<string>();
+            list.Add("TestOne");
+            list.Add("TestFour");
+            list.Add("TestFive");
+            int expectedResult = 6;
+            CustomListClass<string> listThree = list + listTwo;
+
+            int actualResult = listThree.Count;
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestAddOrder()
+        {
+            CustomListClass<string> list = new CustomListClass<string>();
+            list.Add("TestOne");
+            list.Add("TestTwo");
+            list.Add("testThree");
+            CustomListClass<string> listTwo = new CustomListClass<string>();
+            list.Add("TestOne");
+            list.Add("TestFour");
+            list.Add("TestFive");
+            string expectedResult = "TestFour";
+            CustomListClass<string> listThree = list + listTwo;
+
+            string actualResult = listThree[4];
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+
+
+        //END ADD/CONCAT//
+        //SUBTRACT//
+        [TestMethod]
+        public void TestSubtractingTwoInts()
+        {
+            CustomListClass<int> list = new CustomListClass<int>();
+            list.Add(1);
+            list.Add(2);
+            CustomListClass<int> listTwo = new CustomListClass<int>();
+            listTwo.Add(2);
+            listTwo.Add(3);
+            int expectedResult = 3;
+            CustomListClass<string> listThree = list - listTwo;
+
+            int actualResult = listThree.Count;
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestSubtract()
+        {
+            CustomListClass<string> list = new CustomListClass<string>();
+            list.Add("TestOne");
+            list.Add("TestTwo");
+            list.Add("testThree");
+            CustomListClass<string> listTwo = new CustomListClass<string>();
+            list.Add("TestOne");
+            list.Add("TestFour");
+            list.Add("TestFive");
+            int expectedResult = 5;
+            CustomListClass<string> listThree = list - listTwo;
+
+            int actualResult = listThree.Count;
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestSubtractOrder()
+        {
+            CustomListClass<string> list = new CustomListClass<string>();
+            list.Add("TestOne");
+            list.Add("TestTwo");
+            list.Add("testThree");
+            CustomListClass<string> listTwo = new CustomListClass<string>();
+            list.Add("TestOne");
+            list.Add("TestFour");
+            list.Add("TestFive");
+            string expectedResult = "TestFour";
+            CustomListClass<string> listThree = list - listTwo;
+
+            string actualResult = listThree[3];
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        //END SUBTRACT//
+        //ZIP//
+        [TestMethod]
+        public void TestZipString()
+        {
+            CustomListClass<string> list = new CustomListClass<string>();
+            list.Add("H");
+            list.Add("l");
+            list.Add("o");
+            CustomListClass<string> listTwo = new CustomListClass<string>();
+            list.Add("e");
+            list.Add("l");
+            string expectedResult = "e";
+            CustomListClass<string>listThree = list.Zip(listTwo);
+
+            string actualResult = listThree[1];
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestZipInt()
+        {
+            CustomListClass<int> list = new CustomListClass<int>();
+            list.Add(1);
+            list.Add(3);
+            list.Add(4);
+            CustomListClass<int> listTwo = new CustomListClass<int>();
+            list.Add(2);
+            list.Add(4);
+            list.Add(6);
+            int expectedResult = 2;
+            CustomListClass<int> listThree = list.Zip(listTwo);
+
+            int actualResult = listThree[1];
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        //END ZIP//
     }
 }
