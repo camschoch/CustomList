@@ -85,11 +85,11 @@ namespace UnitTestCustomList
         //END ADD METHOD//
         //SUBTRACT METHOD//
         [TestMethod]
-        public void TestIfSubtractWorks()
+        public void TestIfRemoveWorks()
         {
             CustomListClass<string> list = new CustomListClass<string>();
             list.Add("TestOne");
-            list.Subtract("TestOne");
+            list.Remove("TestOne");
             int expectedResults = 0;
 
             int actualResults = Count(list);
@@ -98,34 +98,74 @@ namespace UnitTestCustomList
         }
 
         [TestMethod]
-        public void TestSubtractOrder()
+        public void TestRemoveOrder()
         {
             CustomListClass<string> list = new CustomListClass<string>;
             list.Add("TestOne");
             list.Add("TestTwo");
             string expectedResult = "TestTwo";
-            list.Subtract([0])
+            list.Remove([0])
 
             string actualResult = list[1]; 
         }
+
+        //[TestMethod]
+        //[ExpectedException(typeof(ArgumentOutOfRangeException))]
+        //public void Test
         
 
         //END SUBTRACT METHOD//
-
+        //CONVER TO STRING//
         [TestMethod]
-        public void TestConvertToString()
+        public void TestConvertIntToString()
         {
             CustomListClass<int> list = new CustomListClass<int>;
             list.Add(1);
             list.Add(2);
             list.Add(3);
-            string expectedResult = "2";
-            ConvertToString(list);
+            string expectedResult = "123";
+            list.ConvertToString();
 
             string actualResult = list[1];
 
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestMethod]
+        public void TestConvertToOneString()
+        {
+            CustomListClass<string> list = new CustomListClass<string>;
+            list.Add("TestOne");
+            list.Add("TestTwo");
+            list.Add("TestThree");
+            string Converted = list.ConvertToString();
+
+            string expectedResult = "TestOneTestTwoTestThree";
+
+            string actualResult = Converted;
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestConvertToOneWithCommaString()
+        {
+            CustomListClass<string> list = new CustomListClass<string>;
+            list.Add("TestOne");
+            list.Add("TestTwo");
+            list.Add("TestThree");
+            string Converted = list.ConvertToString(",");
+
+            string expectedResult = "TestOne,TestTwo,TestThree";
+
+            string actualResult = Converted;
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+
+
+        //END CONVERT TO STRING//
         [TestMethod]
         public void TestAddingTwoTogether()
         {
