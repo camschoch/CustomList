@@ -88,7 +88,6 @@ namespace CustomList
             {
                 combinedListPlus.Add(b[i]);
             }
-
             for (int i = 0; i < c.Count; i++)
             {                
                 combinedListPlus.Add(c[i]);
@@ -99,16 +98,14 @@ namespace CustomList
         public static CustomListClass<T> operator -(CustomListClass<T> b, CustomListClass<T> c)
         {
             CustomListClass<T> combinedListMinus = new CustomListClass<T>();
-            combinedListMinus = b + c;
             for (int i = 0; i < b.Count; i++)
             {
-                for (int j = 0; j < c.Count; j++)
-                {
-                    if (b[i].Equals(c[j]))
-                    {
-                        combinedListMinus.Remove();
-                    }
-
+                combinedListMinus.Add(b[i]);
+            }
+            for (int i = 0; i < c.Count; i++)
+            {
+                if (combinedListMinus[i].Equals(c[i]))
+                {     
 
                 }
             }
