@@ -273,63 +273,63 @@ namespace UnitTestCustomList
 
 
 
-        ////END ADD/CONCAT//
-        ////SUBTRACT//
-        //[TestMethod]
-        //public void TestSubtractingTwoInts()
-        //{
-        //    CustomListClass<int> list = new CustomListClass<int>();
-        //    list.Add(1);
-        //    list.Add(2);
-        //    CustomListClass<int> listTwo = new CustomListClass<int>();
-        //    listTwo.Add(2);
-        //    listTwo.Add(3);
-        //    int expectedResult = 3;
-        //    CustomListClass<string> listThree = list - listTwo;
+        //END ADD/CONCAT//
+        //SUBTRACT//
+        [TestMethod]
+        public void TestSubtractingTwoInts()
+        {
+            CustomListClass<int> list = new CustomListClass<int>();
+            list.Add(1);
+            list.Add(2);
+            CustomListClass<int> listTwo = new CustomListClass<int>();
+            listTwo.Add(2);
+            listTwo.Add(3);
+            int expectedResult = 3;
+            CustomListClass<string> listThree = list - listTwo;
 
-        //    int actualResult = listThree.Count;
+            int actualResult = listThree.Count;
 
-        //    Assert.AreEqual(expectedResult, actualResult);
-        //}
+            Assert.AreEqual(expectedResult, actualResult);
+        }
 
-        //[TestMethod]
-        //public void TestSubtract()
-        //{
-        //    CustomListClass<string> list = new CustomListClass<string>();
-        //    list.Add("TestOne");
-        //    list.Add("TestTwo");
-        //    list.Add("testThree");
-        //    CustomListClass<string> listTwo = new CustomListClass<string>();
-        //    list.Add("TestOne");
-        //    list.Add("TestFour");
-        //    list.Add("TestFive");
-        //    int expectedResult = 5;
-        //    CustomListClass<string> listThree = list - listTwo;
+        [TestMethod]
+        public void TestSubtract()
+        {
+            CustomListClass<string> list = new CustomListClass<string>();
+            list.Add("TestOne");
+            list.Add("TestTwo");
+            list.Add("testThree");
+            CustomListClass<string> listTwo = new CustomListClass<string>();
+            list.Add("TestOne");
+            list.Add("TestFour");
+            list.Add("TestFive");
+            int expectedResult = 5;
+            CustomListClass<string> listThree = list - listTwo;
 
-        //    int actualResult = listThree.Count;
+            int actualResult = listThree.Count;
 
-        //    Assert.AreEqual(expectedResult, actualResult);
-        //}
+            Assert.AreEqual(expectedResult, actualResult);
+        }
 
-        //[TestMethod]
-        //public void TestSubtractOrder()
-        //{
-        //    CustomListClass<string> list = new CustomListClass<string>();
-        //    list.Add("TestOne");
-        //    list.Add("TestTwo");
-        //    list.Add("testThree");
-        //    CustomListClass<string> listTwo = new CustomListClass<string>();
-        //    list.Add("TestOne");
-        //    list.Add("TestFour");
-        //    list.Add("TestFive");
-        //    string expectedResult = "TestFour";
-        //    CustomListClass<string> listThree = list - listTwo;
+        [TestMethod]
+        public void TestSubtractOrder()
+        {
+            CustomListClass<string> list = new CustomListClass<string>();
+            list.Add("TestOne");
+            list.Add("TestTwo");
+            list.Add("testThree");
+            CustomListClass<string> listTwo = new CustomListClass<string>();
+            list.Add("TestOne");
+            list.Add("TestFour");
+            list.Add("TestFive");
+            string expectedResult = "TestFour";
+            CustomListClass<string> listThree = list - listTwo;
 
-        //    string actualResult = listThree[3];
+            string actualResult = listThree[3];
 
-        //    Assert.AreEqual(expectedResult, actualResult);
-        //}
-        ////END SUBTRACT//
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        //END SUBTRACT//
         ////ZIP//
         //[TestMethod]
         //public void TestZipString()

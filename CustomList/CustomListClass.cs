@@ -83,17 +83,36 @@ namespace CustomList
 
         public static CustomListClass<T> operator + (CustomListClass<T> b, CustomListClass<T> c)
         {
-            CustomListClass<T> combinedList = new CustomListClass<T>();
-            combinedList = b;
-            combinedList.Count = b.Count + c.Count;
-            for (int i = 0; i < c.Count; i++)
+            CustomListClass<T> combinedListPlus = new CustomListClass<T>();
+            for (int i = 0; i < b.Count; i++)
             {
-                
-                combinedList[i + b.Count] = c[i];
-
+                combinedListPlus.Add(b[i]);
             }
 
-            return combinedList;
+            for (int i = 0; i < c.Count; i++)
+            {                
+                combinedListPlus.Add(c[i]);
+            }
+            return combinedListPlus;
+        }
+
+        public static CustomListClass<T> operator -(CustomListClass<T> b, CustomListClass<T> c)
+        {
+            CustomListClass<T> combinedListMinus = new CustomListClass<T>();
+            combinedListMinus = b + c;
+            for (int i = 0; i < b.Count; i++)
+            {
+                for (int j = 0; j < c.Count; j++)
+                {
+                    if (b[i].Equals(c[j]))
+                    {
+                        combinedListMinus.Remove();
+                    }
+
+
+                }
+            }
+            return combinedListMinus;
         }
 
 
