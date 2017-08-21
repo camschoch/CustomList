@@ -42,7 +42,10 @@ namespace CustomList
 
         public IEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (int index = 0; index < Count; index++)
+            {
+                yield return list[index];
+            }
         }
 
         public void Remove(T item)
@@ -95,22 +98,50 @@ namespace CustomList
             return combinedListPlus;
         }
 
-        public static CustomListClass<T> operator -(CustomListClass<T> b, CustomListClass<T> c)
+        public static CustomListClass<T> operator - (CustomListClass<T> b, CustomListClass<T> c)
         {
             CustomListClass<T> combinedListMinus = new CustomListClass<T>();
-            for (int i = 0; i < b.Count; i++)
-            {
-                combinedListMinus.Add(b[i]);
-            }
-            for (int i = 0; i < c.Count; i++)
-            {
-                if (combinedListMinus[i].Equals(c[i]))
-                {     
 
+            foreach (T item in b)
+            {
+                combinedListMinus.Add(item);
+                //if (item.Equals(c))
+                //{
+                //    combinedListMinus.Remove(item);
+                //}
+            }
+
+            foreach (T item in combinedListMinus)
+            {
+                for (int i = 0; i < c.Count; i++)
+                {
+                    if (item.Equals(c[i]))
+                    {
+                        combinedListMinus.Remove(item);
+                    }
                 }
             }
+
             return combinedListMinus;
         }
+            
+        //SECOND WAY TO OVERRIDE - WITHOUT ITERATOR//
+        //    for (int i = 0; i < b.Count; i++)
+        //    {
+        //        combinedListMinus.Add(b[i]);
+        //    }
+        //    for (int j = 0; j < combinedListMinus.Count; j++)
+        //    {
+        //        for (int i = 0; i < c.Count; i++)
+        //        {
+        //            if (combinedListMinus[j].Equals(c[i]))
+        //            {
+        //                combinedListMinus.Remove(combinedListMinus[j]);
+        //            }
+        //        }
+        //    }
+        //    return combinedListMinus;
+        //}
 
 
         public void Zip(T test)

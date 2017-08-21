@@ -284,8 +284,8 @@ namespace UnitTestCustomList
             CustomListClass<int> listTwo = new CustomListClass<int>();
             listTwo.Add(2);
             listTwo.Add(3);
-            int expectedResult = 3;
-            CustomListClass<string> listThree = list - listTwo;
+            int expectedResult = 1;
+            CustomListClass<int> listThree = list - listTwo;
 
             int actualResult = listThree.Count;
 
@@ -300,10 +300,10 @@ namespace UnitTestCustomList
             list.Add("TestTwo");
             list.Add("testThree");
             CustomListClass<string> listTwo = new CustomListClass<string>();
-            list.Add("TestOne");
-            list.Add("TestFour");
-            list.Add("TestFive");
-            int expectedResult = 5;
+            listTwo.Add("TestOne");
+            listTwo.Add("TestFour");
+            listTwo.Add("TestFive");
+            int expectedResult = 2;
             CustomListClass<string> listThree = list - listTwo;
 
             int actualResult = listThree.Count;
@@ -317,56 +317,56 @@ namespace UnitTestCustomList
             CustomListClass<string> list = new CustomListClass<string>();
             list.Add("TestOne");
             list.Add("TestTwo");
-            list.Add("testThree");
+            list.Add("TestThree");
             CustomListClass<string> listTwo = new CustomListClass<string>();
-            list.Add("TestOne");
-            list.Add("TestFour");
-            list.Add("TestFive");
-            string expectedResult = "TestFour";
+            listTwo.Add("TestOne");
+            listTwo.Add("TestFour");
+            listTwo.Add("TestFive");
+            string expectedResult = "TestTwo";
             CustomListClass<string> listThree = list - listTwo;
 
-            string actualResult = listThree[3];
+            string actualResult = listThree[0];
 
             Assert.AreEqual(expectedResult, actualResult);
         }
         //END SUBTRACT//
-        ////ZIP//
-        //[TestMethod]
-        //public void TestZipString()
-        //{
-        //    CustomListClass<string> list = new CustomListClass<string>();
-        //    list.Add("H");
-        //    list.Add("l");
-        //    list.Add("o");
-        //    CustomListClass<string> listTwo = new CustomListClass<string>();
-        //    list.Add("e");
-        //    list.Add("l");
-        //    string expectedResult = "e";
-        //    CustomListClass<string> listThree = list.Zip(listTwo);
+        //ZIP//
+        [TestMethod]
+        public void TestZipString()
+        {
+            CustomListClass<string> list = new CustomListClass<string>();
+            list.Add("H");
+            list.Add("l");
+            list.Add("o");
+            CustomListClass<string> listTwo = new CustomListClass<string>();
+            list.Add("e");
+            list.Add("l");
+            string expectedResult = "e";
+            CustomListClass<string> listThree = list.Zip(listTwo);
 
-        //    string actualResult = listThree[1];
+            string actualResult = listThree[1];
 
-        //    Assert.AreEqual(expectedResult, actualResult);
-        //}
+            Assert.AreEqual(expectedResult, actualResult);
+        }
 
-        //[TestMethod]
-        //public void TestZipInt()
-        //{
-        //    CustomListClass<int> list = new CustomListClass<int>();
-        //    list.Add(1);
-        //    list.Add(3);
-        //    list.Add(4);
-        //    CustomListClass<int> listTwo = new CustomListClass<int>();
-        //    list.Add(2);
-        //    list.Add(4);
-        //    list.Add(6);
-        //    int expectedResult = 2;
-        //    CustomListClass<int> listThree = list.Zip(listTwo);
+        [TestMethod]
+        public void TestZipInt()
+        {
+            CustomListClass<int> list = new CustomListClass<int>();
+            list.Add(1);
+            list.Add(3);
+            list.Add(4);
+            CustomListClass<int> listTwo = new CustomListClass<int>();
+            list.Add(2);
+            list.Add(4);
+            list.Add(6);
+            int expectedResult = 2;
+            CustomListClass<int> listThree = list.Zip(listTwo);
 
-        //    int actualResult = listThree[1];
+            int actualResult = listThree[1];
 
-        //    Assert.AreEqual(expectedResult, actualResult);
-        //}
+            Assert.AreEqual(expectedResult, actualResult);
+        }
 
         //END ZIP//
     }
