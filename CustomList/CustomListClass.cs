@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class CustomListClass<T> : IEnumerable
+    public class CustomListClass<T> : IEnumerable 
     { 
         public int Count;
         private T[] list;
@@ -48,32 +48,70 @@ namespace CustomList
             }
         }
 
+        //public void Remove(T item)
+        //{
+        //    T[] tempList = new T[Count];
+        //    for (int j = 0; j < Count; j++)
+        //    {
+        //        if (list[j].Equals(item))
+        //        {
+        //            for (int i = j; i < Count; i++)
+        //            {
+        //                if (i + 1 == Count)
+        //                {
+        //                    j = i;
+        //                    tempList[i] = list[i];
+        //                    break;
+        //                }
+        //                Count--;
+        //                tempList[i] = list[i + 1];
+        //            }
+        //        }
+        //        else
+        //        {
+        //            tempList[j] = list[j];
+        //        }
+        //    }
+                        
+        //    list = tempList;
+        //}
+
         public void Remove(T item)
         {
-            T[] tempList = new T[Count];
-
-            for(int j = 0; j < Count; j++)
+            CustomListClass<T> tempList = new CustomListClass<T>();
+            int tempCount = Count;
+            for (int i = 0; i < tempCount; i++)
             {
-                if (list[j].Equals(item))
+                if (list[i].Equals(item))
                 {
-                    for (int i = j; i < Count; i++)
-                    {
-                        if (i + 1 == Count)
-                        {
-                            j = i;
-                            break;
-                        }
-                        tempList[i] = list[i + 1];
-                    }
+                    Count--;
                 }
                 else
                 {
-                    tempList[j] = list[j];
+                    tempList.Add(list[i]);
                 }
-           }
-            Count--;
-            list = tempList;
+            }
+            T[] tempArr = new T[tempList.Count];
+            for (int i = 0; i < tempList.Count; i++)
+            {
+                tempArr[i] = tempList[i];
+            }
+            list = tempArr;
         }
+
+        //public void Remove(T item)
+        //{
+        //    T[] tempList = new T[Count];
+
+        //    for(int i = 0; i < Count; i++)
+        //    {
+        //        if (list[i].Equals(item))
+        //        {
+        //            tempList[i] = list[i + 1];
+        //        }
+        //        tempList[i] = list[i];
+        //    }
+        //}
 
         public override string ToString()
         {   
@@ -101,21 +139,21 @@ namespace CustomList
         public static CustomListClass<T> operator - (CustomListClass<T> b, CustomListClass<T> c)
         {
             CustomListClass<T> combinedListMinus = new CustomListClass<T>();
+            combinedListMinus = b;
+            //foreach (T item in b)
+            //{
+            //    combinedListMinus.Add(item);
+            //}
 
-            foreach (T item in b)
+            foreach (T item in c)
             {
-                combinedListMinus.Add(item);
-            }
-
-            foreach (T item in combinedListMinus)
-            {
-                for (int i = 0; i < c.Count; i++)
-                {
-                    if (item.Equals(c[i]))
-                    {
+                //for (int i = 0; i < c.Count; i++)
+                //{
+                //    if (item.Equals(c[i]))
+                //    {
                         combinedListMinus.Remove(item);
-                    }
-                }
+                //    }
+                //}
             }
             return combinedListMinus;
         }

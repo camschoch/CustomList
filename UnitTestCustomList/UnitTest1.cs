@@ -142,6 +142,21 @@ namespace UnitTestCustomList
             Assert.AreEqual(expectedResult, actualResult);
         }
 
+        [TestMethod]
+        public void TestRemoveOnInt()
+        {
+            CustomListClass<int> list = new CustomListClass<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(2);
+            int expectedResult = 2;
+            list.Remove(2);
+
+            int actualResult = list.Count;
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
         //[TestMethod]
         //public void TestRemoveAndPlaceInNewValue()
         //{
@@ -281,10 +296,11 @@ namespace UnitTestCustomList
             CustomListClass<int> list = new CustomListClass<int>();
             list.Add(1);
             list.Add(2);
+            list.Add(2);
             CustomListClass<int> listTwo = new CustomListClass<int>();
             listTwo.Add(2);
             listTwo.Add(3);
-            int expectedResult = 1;
+            int expectedResult = 2;
             CustomListClass<int> listThree = list - listTwo;
 
             int actualResult = listThree.Count;
@@ -296,17 +312,24 @@ namespace UnitTestCustomList
         public void TestSubtract()
         {
             CustomListClass<string> list = new CustomListClass<string>();
-            list.Add("TestOne");
-            list.Add("TestTwo");
-            list.Add("testThree");
+            list.Add("A");
+            list.Add("B");
+            list.Add("C");
+            list.Add("C");
+            list.Add("D");
+            list.Add("C");
+            list.Add("E");
+            list.Add("C");
             CustomListClass<string> listTwo = new CustomListClass<string>();
-            listTwo.Add("TestOne");
-            listTwo.Add("TestFour");
-            listTwo.Add("TestFive");
-            int expectedResult = 2;
+            listTwo.Add("C");
+            listTwo.Add("C");
+            listTwo.Add("E");
+            listTwo.Add("A");
+            listTwo.Add("R");
+            string expectedResult = "C";
             CustomListClass<string> listThree = list - listTwo;
 
-            int actualResult = listThree.Count;
+            string actualResult = listThree[3];
 
             Assert.AreEqual(expectedResult, actualResult);
         }
@@ -380,10 +403,10 @@ namespace UnitTestCustomList
             listTwo.Add(4);
             listTwo.Add(6);
             listTwo.Add(7);
-            int expectedResult = 7;
+            int expectedResult = 5;
             CustomListClass<int> listThree = list.Zip(listTwo);
 
-            int actualResult = listThree[6];
+            int actualResult = listThree[4];
 
             Assert.AreEqual(expectedResult, actualResult);
         }
