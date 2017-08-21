@@ -360,10 +360,30 @@ namespace UnitTestCustomList
             listTwo.Add(2);
             listTwo.Add(4);
             listTwo.Add(6);
-            int expectedResult = 2;
+            int expectedResult = 5;
             CustomListClass<int> listThree = list.Zip(listTwo);
 
-            int actualResult = listThree[1];
+            int actualResult = listThree[4];
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestZipsdvnhInt()
+        {
+            CustomListClass<int> list = new CustomListClass<int>();
+            list.Add(1);
+            list.Add(3);
+            list.Add(5);
+            CustomListClass<int> listTwo = new CustomListClass<int>();
+            listTwo.Add(2);
+            listTwo.Add(4);
+            listTwo.Add(6);
+            listTwo.Add(7);
+            int expectedResult = 7;
+            CustomListClass<int> listThree = list.Zip(listTwo);
+
+            int actualResult = listThree[6];
 
             Assert.AreEqual(expectedResult, actualResult);
         }

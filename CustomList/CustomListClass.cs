@@ -142,12 +142,43 @@ namespace CustomList
         public CustomListClass<T> Zip(CustomListClass<T> listTwo)
         {
             CustomListClass<T> tempList = new CustomListClass<T>();
-            tempList.Add(list[0]);
-            for (int i = 0; i < Count + listTwo.Count; i++)
-            {               
-                tempList.Add(listTwo[i]);
-                tempList.Add(list[i]);
-                return tempList;             
+            if (Count == listTwo.Count)
+            {
+                for (int i = 0; i < Count; i++)
+                {
+                    tempList.Add(list[i]);
+                    tempList.Add(listTwo[i]);
+                }
+                return tempList;
+            }
+
+            else if (Count > listTwo.Count)
+            {
+                for (int i = 0; i < Count; i++)
+                {
+                   
+                    tempList.Add(list[i]);
+                    if (listTwo.Count > i)
+                    {
+                        tempList.Add(listTwo[i]);
+
+                    }
+                }
+                return tempList;
+            }
+
+            else if (Count < listTwo.Count)
+            {
+                for (int i = 0; i < listTwo.Count; i++)
+                {
+                    if (Count > i)
+                    {
+                        tempList.Add(list[i]);
+                    }
+                    tempList.Add(listTwo[i]);
+                    
+                }
+                return tempList;
             }
             return tempList;
         }
