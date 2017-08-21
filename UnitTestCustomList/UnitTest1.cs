@@ -339,8 +339,8 @@ namespace UnitTestCustomList
             list.Add("l");
             list.Add("o");
             CustomListClass<string> listTwo = new CustomListClass<string>();
-            list.Add("e");
-            list.Add("l");
+            listTwo.Add("e");
+            listTwo.Add("l");
             string expectedResult = "e";
             CustomListClass<string> listThree = list.Zip(listTwo);
 
@@ -355,11 +355,11 @@ namespace UnitTestCustomList
             CustomListClass<int> list = new CustomListClass<int>();
             list.Add(1);
             list.Add(3);
-            list.Add(4);
+            list.Add(5);
             CustomListClass<int> listTwo = new CustomListClass<int>();
-            list.Add(2);
-            list.Add(4);
-            list.Add(6);
+            listTwo.Add(2);
+            listTwo.Add(4);
+            listTwo.Add(6);
             int expectedResult = 2;
             CustomListClass<int> listThree = list.Zip(listTwo);
 

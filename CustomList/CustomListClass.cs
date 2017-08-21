@@ -105,10 +105,6 @@ namespace CustomList
             foreach (T item in b)
             {
                 combinedListMinus.Add(item);
-                //if (item.Equals(c))
-                //{
-                //    combinedListMinus.Remove(item);
-                //}
             }
 
             foreach (T item in combinedListMinus)
@@ -121,7 +117,6 @@ namespace CustomList
                     }
                 }
             }
-
             return combinedListMinus;
         }
             
@@ -144,10 +139,17 @@ namespace CustomList
         //}
 
 
-        public void Zip(T test)
+        public CustomListClass<T> Zip(CustomListClass<T> listTwo)
         {
-
+            CustomListClass<T> tempList = new CustomListClass<T>();
+            tempList.Add(list[0]);
+            for (int i = 0; i < Count + listTwo.Count; i++)
+            {               
+                tempList.Add(listTwo[i]);
+                tempList.Add(list[i]);
+                return tempList;             
+            }
+            return tempList;
         }
-
     }
 }
