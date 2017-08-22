@@ -80,11 +80,13 @@ namespace CustomList
         {
             CustomListClass<T> tempList = new CustomListClass<T>();
             int tempCount = Count;
+            bool foundItem = false;
             for (int i = 0; i < tempCount; i++)
             {
-                if (list[i].Equals(item))
+                if (list[i].Equals(item) && foundItem == false)
                 {
                     Count--;
+                    foundItem = true;           
                 }
                 else
                 {
