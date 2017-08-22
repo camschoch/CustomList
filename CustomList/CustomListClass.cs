@@ -48,34 +48,6 @@ namespace CustomList
             }
         }
 
-        //public void Remove(T item)
-        //{
-        //    T[] tempList = new T[Count];
-        //    for (int j = 0; j < Count; j++)
-        //    {
-        //        if (list[j].Equals(item))
-        //        {
-        //            for (int i = j; i < Count; i++)
-        //            {
-        //                if (i + 1 == Count)
-        //                {
-        //                    j = i;
-        //                    tempList[i] = list[i];
-        //                    break;
-        //                }
-        //                Count--;
-        //                tempList[i] = list[i + 1];
-        //            }
-        //        }
-        //        else
-        //        {
-        //            tempList[j] = list[j];
-        //        }
-        //    }
-                        
-        //    list = tempList;
-        //}
-
         public void Remove(T item)
         {
             CustomListClass<T> tempList = new CustomListClass<T>();
@@ -100,20 +72,6 @@ namespace CustomList
             }
             list = tempArr;
         }
-
-        //public void Remove(T item)
-        //{
-        //    T[] tempList = new T[Count];
-
-        //    for(int i = 0; i < Count; i++)
-        //    {
-        //        if (list[i].Equals(item))
-        //        {
-        //            tempList[i] = list[i + 1];
-        //        }
-        //        tempList[i] = list[i];
-        //    }
-        //}
 
         public override string ToString()
         {   
@@ -142,43 +100,13 @@ namespace CustomList
         {
             CustomListClass<T> combinedListMinus = new CustomListClass<T>();
             combinedListMinus = b;
-            //foreach (T item in b)
-            //{
-            //    combinedListMinus.Add(item);
-            //}
-
             foreach (T item in c)
             {
-                //for (int i = 0; i < c.Count; i++)
-                //{
-                //    if (item.Equals(c[i]))
-                //    {
-                        combinedListMinus.Remove(item);
-                //    }
-                //}
+                combinedListMinus.Remove(item);
             }
             return combinedListMinus;
         }
             
-        //SECOND WAY TO OVERRIDE - WITHOUT ITERATOR//
-        //    for (int i = 0; i < b.Count; i++)
-        //    {
-        //        combinedListMinus.Add(b[i]);
-        //    }
-        //    for (int j = 0; j < combinedListMinus.Count; j++)
-        //    {
-        //        for (int i = 0; i < c.Count; i++)
-        //        {
-        //            if (combinedListMinus[j].Equals(c[i]))
-        //            {
-        //                combinedListMinus.Remove(combinedListMinus[j]);
-        //            }
-        //        }
-        //    }
-        //    return combinedListMinus;
-        //}
-
-
         public CustomListClass<T> Zip(CustomListClass<T> listTwo)
         {
             CustomListClass<T> tempList = new CustomListClass<T>();
